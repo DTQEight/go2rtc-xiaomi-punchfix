@@ -1,0 +1,14 @@
+--- a/pkg/xiaomi/miss/client.go
++++ b/pkg/xiaomi/miss/client.go
+@@ -169,7 +169,10 @@ func (c *Client) writeAndWait(b []byte, waitMsg uint8) ([]byte, error) {
+ 			return nil, err
+ 		}
+ 
+-		if string(addr.IP) != string(c.addr.IP) {
++		// Some Xiaomi cameras (e.g. chuangmi.camera.81ac1) send the LAN-search
++		// punch reply with the gateway IP as source. Accept it anyway and keep
++		// using the camera IP; only the port is learned from the reply.
++		if string(addr.IP) != string(c.addr.IP) && waitMsg != msgPunchPkt {
+ 			continue // skip messages from another IP
+ 		}
+ 

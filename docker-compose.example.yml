@@ -1,0 +1,13 @@
+services:
+  go2rtc:
+    image: go2rtc:1.9.13-punchfix
+    pull_policy: never          # local image built by ./build.sh
+    container_name: go2rtc
+    network_mode: host          # 1984 / 8554 / 8555 on the host
+    restart: always
+    working_dir: /config
+    command: ["go2rtc", "-config", "/config/go2rtc.yaml"]
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - ./config:/config

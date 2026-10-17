@@ -1,0 +1,5 @@
+src/
+go2rtc
+Dockerfile.runtime
+config/
+*.log
