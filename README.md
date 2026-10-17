@@ -1,5 +1,7 @@
 # go2rtc — Xiaomi MISS "read punch" fix
 
+**English** | [简体中文](README.zh-CN.md)
+
 Patch for Xiaomi cameras (e.g. `chuangmi.camera.81ac1` / Xiaomi C700) that never start
 streaming in [go2rtc](https://github.com/AlexxIT/go2rtc) and log:
 
@@ -111,8 +113,9 @@ services:
 而不是摄像头自己，go2rtc 的 `miss` 客户端只接受“源 IP == 摄像头 IP”的包，于是回包被丢弃、
 握手超时（`read punch: i/o timeout`）。1.9.13 / 1.9.14 都有这段校验，所以升降级无效。
 
-补丁只对 punch 阶段放宽源 IP 校验，收到回包后仍向摄像头真实地址发包。用 `build.sh` 可在无法访问
-Docker Hub 的机器上完成构建（Go 工具链走 golang.google.cn，依赖走 goproxy.cn）。
+补丁只对 punch 阶段放宽源 IP 校验，收到回包后仍向摄像头真实地址发包。
+
+完整中文说明见 **[README.zh-CN.md](README.zh-CN.md)**。
 
 ## License
 
