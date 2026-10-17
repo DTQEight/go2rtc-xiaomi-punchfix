@@ -18,6 +18,10 @@ SRC="$WORK/src"
 
 command -v docker >/dev/null || { echo "error: docker not found" >&2; exit 1; }
 command -v patch  >/dev/null || { echo "error: patch not found"  >&2; exit 1; }
+docker info >/dev/null 2>&1 || {
+  echo "error: cannot access the docker daemon - run with sudo or as a member of the docker group" >&2
+  exit 1
+}
 
 # 1. source
 if [ ! -f "$SRC/pkg/xiaomi/miss/client.go" ]; then

@@ -53,10 +53,11 @@ Patch file: [punch.patch](punch.patch) — applies to go2rtc `v1.9.13`, forward-
 
 ### Option A — `build.sh` (no Docker Hub required)
 
-Requirements: `bash`, `curl`, `patch`, `docker`.
+Requirements: `bash`, `curl`, `patch`, `docker` — run as root or as a user in the `docker` group
+(e.g. `sudo ./build.sh`).
 
 ```bash
-./build.sh
+sudo ./build.sh
 ```
 
 It downloads go2rtc `v1.9.13`, applies `punch.patch`, downloads a Go toolchain from
